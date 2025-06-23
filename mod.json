@@ -5,11 +5,11 @@
         "android": "2.2074",
         "mac": "2.2074"
     },
-    "id": "mystical433.scale-da-icon",
-    "name": "Scale Da Icon",
-    "version": "v1.0.0",
-    "description": "Scale your player and adjust jump boost for smaller players",
-    "developer": "Mystical433",
+    "id": "mystical433.toolkits",
+    "name": "ToolKits",
+    "version": "v2.0.0",
+    "description": "Advanced player scaling with multiple visual effects, speed boosts, and customization options",
+    "developer": "YourUsername",
     "settings": {
         "player-scale": {
             "name": "Player Scale",
@@ -17,25 +17,106 @@
             "type": "float",
             "default": 0.5,
             "min": 0.1,
-            "max": 100.0,
+            "max": 3.0,
             "control": {
                 "slider": true,
                 "slider-step": 0.05,
                 "arrows": false
             }
         },
+        "enable-jump-boost": {
+            "name": "Enable Jump Boost",
+            "description": "Allow small players to jump higher",
+            "type": "bool",
+            "default": true
+        },
         "jump-boost": {
-            "name": "Jump Boost",
+            "name": "Jump Boost Multiplier",
             "description": "Jump velocity multiplier when player is scaled below 1.0",
             "type": "float", 
-            "default": 1.2,
+            "default": 1.3,
             "min": 1.0,
-            "max": 34737434343434343434343434.0,
+            "max": 3.0,
             "control": {
                 "slider": true,
                 "slider-step": 0.1,
                 "arrows": false
             }
+        },
+        "enable-speed-boost": {
+            "name": "Enable Speed Boost",
+            "description": "Give small players extra horizontal speed",
+            "type": "bool",
+            "default": false
+        },
+        "speed-multiplier": {
+            "name": "Speed Multiplier",
+            "description": "Horizontal speed multiplier for small players",
+            "type": "float",
+            "default": 1.1,
+            "min": 1.0,
+            "max": 2.0,
+            "control": {
+                "slider": true,
+                "slider-step": 0.05,
+                "arrows": false
+            }
+        },
+        "enable-transparency": {
+            "name": "Enable Transparency",
+            "description": "Make the player semi-transparent",
+            "type": "bool",
+            "default": false
+        },
+        "player-opacity": {
+            "name": "Player Opacity",
+            "description": "How transparent the player should be (1.0 = fully visible)",
+            "type": "float",
+            "default": 0.7,
+            "min": 0.1,
+            "max": 1.0,
+            "control": {
+                "slider": true,
+                "slider-step": 0.05,
+                "arrows": false
+            }
+        },
+        "enable-spin-mode": {
+            "name": "Enable Spin Mode",
+            "description": "Make very small players spin continuously",
+            "type": "bool",
+            "default": false
+        },
+        "spin-speed": {
+            "name": "Spin Speed",
+            "description": "How fast the player spins (degrees per frame)",
+            "type": "float",
+            "default": 2.0,
+            "min": 0.5,
+            "max": 10.0,
+            "control": {
+                "slider": true,
+                "slider-step": 0.5,
+                "arrows": false
+            }
+        },
+        "enable-mini-trail": {
+            "name": "Enable Mini Trail",
+            "description": "Add particle trail for very small players (≤0.3 scale)",
+            "type": "bool",
+            "default": true
+        },
+        "enable-mini-death-effect": {
+            "name": "Enable Mini Death Effect",
+            "description": "Special death animation for small players",
+            "type": "bool",
+            "default": true
+        },
+        "enable-debug-mode": {
+            "name": "Debug Mode",
+            "description": "Enable debug logging for troubleshooting",
+            "type": "bool",
+            "default": false
         }
     }
 }
