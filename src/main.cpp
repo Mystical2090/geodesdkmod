@@ -1,7 +1,7 @@
 #include <Geode/Geode.hpp>
-// ngl i should make everything seperate but idc
-using namespace geode::prelude;
 
+using namespace geode::prelude;
+// everything seperate file
 #include <Geode/modify/MenuLayer.hpp>
 
 #include <Geode/modify/PlayLayer.hpp>
@@ -12,7 +12,6 @@ using namespace geode::prelude;
 
 #include <random>
 
-// Custom settings for the mod
 class ModSettings : public CCObject {
 public:
     static ModSettings* getInstance() {
@@ -109,11 +108,9 @@ class $modify(MyMenuLayer, MenuLayer) {
                 settings->pranksEnabled ? "ON" : "OFF",
                 settings->uiModifications ? "ON" : "OFF",
                 settings->customMessages ? "ON" : "OFF"),
-            "Toggle Pranks", "Toggle UI", "Close"
+            "OK"
         );
         
-        alert->m_button1->setTarget(this, menu_selector(MyMenuLayer::togglePranks));
-        alert->m_button2->setTarget(this, menu_selector(MyMenuLayer::toggleUI));
         alert->show();
     }
     
@@ -139,6 +136,8 @@ class $modify(MyMenuLayer, MenuLayer) {
 };
 
 class $modify(MyPlayLayer, PlayLayer) {
+    int m_attemptClickCount = 0;
+    
     bool init(GJGameLevel* level, bool useReplay, bool dontCreateObjects) {
         if (!PlayLayer::init(level, useReplay, dontCreateObjects)) return false;
         
@@ -160,7 +159,7 @@ class $modify(MyPlayLayer, PlayLayer) {
     void checkCompletion(float dt) {
         if (this->m_hasCompletedLevel && ModSettings::getInstance()->customMessages) {
             this->unschedule(schedule_selector(MyPlayLayer::checkCompletion));
-                        this->runAction(CCSequence::create(
+            this->runAction(CCSequence::create(
                 CCDelayTime::create(1.0f),
                 CCCallFunc::create(this, callfunc_selector(MyPlayLayer::showCustomCompletion)),
                 nullptr
@@ -203,8 +202,8 @@ class $modify(MyPlayLayer, PlayLayer) {
             
             FLAlertLayer::create("Wait!", 
                 quitMessages[dis(gen)], 
-                "One More", "Actually Quit"
-            );
+                "OK"
+            )->show();
             return;
         }
         
@@ -236,7 +235,7 @@ class $modify(MyLevelInfoLayer, LevelInfoLayer) {
             {6, "Demon: <cr>Good luck!</c>"}
         };
         
-        auto difficulty = this->m_level->m_difficulty;
+        auto difficulty = static_cast<int>(this->m_level->m_difficulty);
         auto customLabel = CCLabelBMFont::create(
             difficultyMemes.count(difficulty) ? 
                 difficultyMemes[difficulty].c_str() : 
@@ -255,7 +254,6 @@ class $modify(MyCreatorLayer, CreatorLayer) {
         if (!CreatorLayer::init()) return false;
         
         if (ModSettings::getInstance()->pranksEnabled) {
-            // Add prank messages to creator buttons
             this->schedule(schedule_selector(MyCreatorLayer::addPrankListeners), 0.1f);
         }
         
@@ -266,7 +264,9 @@ class $modify(MyCreatorLayer, CreatorLayer) {
         this->unschedule(schedule_selector(MyCreatorLayer::addPrankListeners));
         
         if (auto createBtn = this->getChildByID("create-button")) {
-            createBtn->setTarget(this, menu_selector(MyCreatorLayer::onPrankCreate));
+            if (auto menuItem = typeinfo_cast<CCMenuItemSpriteExtra*>(createBtn)) {
+                menuItem->setTarget(this, menu_selector(MyCreatorLayer::onPrankCreate));
+            }
         }
     }
     
@@ -285,7 +285,7 @@ class $modify(MyCreatorLayer, CreatorLayer) {
         
         FLAlertLayer::create("Oops!", 
             createMessages[dis(gen)], 
-            "Darn"
+            "Damn"
         )->show();
     }
 };
