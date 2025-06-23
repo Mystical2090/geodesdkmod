@@ -1,21 +1,41 @@
 {
     "geode": "4.6.1",
     "gd": {
-        "mac": "2.2074",
         "win": "2.2074",
         "android": "2.2074",
-        "ios": "2.2074"
+        "mac": "2.2074"
     },
+    "id": "mystical433.scale-da-icon",
+    "name": "Scale Da Icon",
     "version": "v1.0.0",
-    "id": "mystical433.test",
-    "name": "Test",
+    "description": "Scale your player and adjust jump boost for smaller players",
     "developer": "Mystical433",
-    "description": "A test mod for Geometry Dash",
-    "dependencies": [
-        {
-            "id": "geode.node-ids",
-            "version": ">=1.12.0",
-            "importance": "required"
+    "settings": {
+        "player-scale": {
+            "name": "Player Scale",
+            "description": "Scale multiplier for the player (1.0 = normal size)",
+            "type": "float",
+            "default": 0.5,
+            "min": 0.1,
+            "max": 100.0,
+            "control": {
+                "slider": true,
+                "slider-step": 0.05,
+                "arrows": false
+            }
+        },
+        "jump-boost": {
+            "name": "Jump Boost",
+            "description": "Jump velocity multiplier when player is scaled below 1.0",
+            "type": "float", 
+            "default": 1.2,
+            "min": 1.0,
+            "max": 34737434343434343434343434.0,
+            "control": {
+                "slider": true,
+                "slider-step": 0.1,
+                "arrows": false
+            }
         }
-    ]
+    }
 }
