@@ -1,29 +1,21 @@
 #include <Geode/Geode.hpp>
 using namespace geode::prelude;
+
 #include <Geode/modify/PlayerObject.hpp>
+#include <Geode/modify/GJBaseGameLayer.hpp>
 
 class $modify(MyPlayerObject, PlayerObject) {
     bool init(int p0, int p1, GJBaseGameLayer* p2, cocos2d::CCLayer* p3, bool p4) {
         if (!PlayerObject::init(p0, p1, p2, p3, p4)) return false;
-
         this->applyMiniMeEffects();
         return true;
     }
 
     void update(float dt) {
         PlayerObject::update(dt);
-
         this->applyMiniMeEffects();
 
         float scale = Mod::get()->getSettingValue<double>("player-scale");
-        if (scale < 1.0f && Mod::get()->getSettingValue<bool>("enable-speed-boost")) {
-            float speedMultiplier = Mod::get()->getSettingValue<double>("speed-multiplier");
-
-            auto pos = this->getPosition();
-            pos.x += 100.0f * dt * speedMultiplier;
-            this->setPosition(pos);
-        }
-
         if (scale <= 0.3f && Mod::get()->getSettingValue<bool>("enable-mini-trail")) {
             this->addMiniTrail();
         }
@@ -44,11 +36,6 @@ class $modify(MyPlayerObject, PlayerObject) {
             float opacity = Mod::get()->getSettingValue<double>("player-opacity");
             this->setOpacity(static_cast<GLubyte>(opacity * 255));
         }
-
-        if (Mod::get()->getSettingValue<bool>("enable-spin-mode") && scale < 0.5f) {
-            float spinSpeed = Mod::get()->getSettingValue<double>("spin-speed");
-            this->setRotation(this->getRotation() + spinSpeed);
-        }
     }
 
     void addMiniTrail() {
@@ -61,7 +48,7 @@ class $modify(MyPlayerObject, PlayerObject) {
                 particle->setPosition(this->getPosition());
                 particle->setScale(0.1f);
                 particle->setLife(0.5f);
-                particle->setStartColor({1.0f, 1.0f, 0.0f, 1.0f}); // yellow
+                particle->setStartColor({1.0f, 1.0f, 0.0f, 1.0f});
                 particle->setEndColor({1.0f, 0.0f, 0.0f, 0.0f});
                 particle->setTotalParticles(1);
 
@@ -92,7 +79,7 @@ class $modify(MyPlayerObject, PlayerObject) {
             if (spark && this->getParent()) {
                 spark->setPosition(this->getPosition());
                 spark->setScale(0.3f);
-                spark->setColor({255, 255, 0}); // Yellow sparks
+                spark->setColor({255, 255, 0});
                 this->getParent()->addChild(spark);
 
                 float angle = (rand() % 360) * M_PI / 180.0f;
@@ -118,3 +105,14 @@ class $modify(MyPlayerObject, PlayerObject) {
     }
 };
 
+class $modify(Speedhack, GJBaseGameLayer) {
+public:
+    void update(float dt) {
+        if (Mod::get()->getSettingValue<bool>("speedhack-bool")) {
+            float multiplier = Mod::get()->getSettingValue<float>("speedhack");
+            GJBaseGameLayer::update(dt * multiplier);
+        } else {
+            GJBaseGameLayer::update(dt);
+        }
+    }
+};
