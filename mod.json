@@ -1,0 +1,15 @@
+{
+{
+    "geode": "4.5.0",
+    "gd": {
+        "mac": "2.2074",
+        "win": "2.2074",
+        "android": "2.2074",
+        "ios": "2.2074"
+    },
+    "version": "v1.0.0",
+    "id": "mystical433.test,
+    "name": "Test",
+     "developer": "Mystical433",
+    "description": ""
+}
