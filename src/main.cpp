@@ -108,7 +108,7 @@ class $modify(MyPlayerObject, PlayerObject) {
 class $modify(Speedhack, GJBaseGameLayer) {
 public:
     void update(float dt) {
-        if (Mod::get()->getSettingValue<bool>("speedhack-bool")) {
+        if (Mod::get()->getSettingValue<bool>("enable-speed-boost")) {
             float multiplier = Mod::get()->getSettingValue<float>("speedhack");
             GJBaseGameLayer::update(dt * multiplier);
         } else {
