@@ -1,7 +1,7 @@
 #include <Geode/Geode.hpp>
-// shit
+// shi 
 using namespace geode::prelude;
-
+//s hit
 #include <Geode/modify/MenuLayer.hpp>
 
 #include <Geode/modify/PlayLayer.hpp>
@@ -52,66 +52,15 @@ class $modify(MyMenuLayer, MenuLayer) {
     }
     
     void onPlay(CCObject* sender) {
-        if (!ModSettings::getInstance()->pranksEnabled) {
-            MenuLayer::onPlay(sender);
-            return;
-        }
-        
-        std::vector<std::string> prankMessages = {
-            "hA you <cp>cant</c> play the level!",
-            "Nice try, but <cy>nope</c>!",
-            "The level is <cr>temporarily closed</c>!",
-            "Come back <cg>later</c> maybe?",
-            "Level machine is <co>broken</c>!"
-        };
-        
-        std::random_device rd;
-        std::mt19937 gen(rd());
-        std::uniform_int_distribution<> dis(0, prankMessages.size() - 1);
-        
-        FLAlertLayer::create("Sike!", 
-            prankMessages[dis(gen)], 
-            "Aww man"
-        )->show();
+        FLAlertLayer::create("No!", "You can't do that!", "OK")->show();
     }
     
     void onOptions(CCObject* sender) {
-        if (!ModSettings::getInstance()->pranksEnabled) {
-            MenuLayer::onOptions(sender);
-            return;
-        }
-        
-        std::vector<std::string> optionMessages = {
-            "Frick you you cant change it.",
-            "<cr>Options are locked</c> buddy!",
-            "Settings are <cy>off limits</c>!",
-            "No touchy the <cg>options</c>!",
-            "Access <co>denied</c>!"
-        };
-        
-        std::random_device rd;
-        std::mt19937 gen(rd());
-        std::uniform_int_distribution<> dis(0, optionMessages.size() - 1);
-        
-        FLAlertLayer::create("Sike!", 
-            optionMessages[dis(gen)], 
-            "Fine..."
-        )->show();
+        FLAlertLayer::create("No!", "You can't do that!", "OK")->show();
     }
     
     void onCustomButton(CCObject* sender) {
-        auto settings = ModSettings::getInstance();
-        
-        auto alert = FLAlertLayer::create(
-            "Mod Settings",
-            fmt::format("Pranks: {}\nUI Mods: {}\nCustom Messages: {}",
-                settings->pranksEnabled ? "ON" : "OFF",
-                settings->uiModifications ? "ON" : "OFF",
-                settings->customMessages ? "ON" : "OFF"),
-            "OK"
-        );
-        
-        alert->show();
+        FLAlertLayer::create("No!", "You can't do that!", "OK")->show();
     }
     
     void togglePranks(CCObject* sender) {
@@ -189,27 +138,7 @@ class $modify(MyPlayLayer, PlayLayer) {
     }
     
     void onQuit() {
-        if (ModSettings::getInstance()->pranksEnabled && m_fields->m_attemptClickCount > 10) {
-            std::vector<std::string> quitMessages = {
-                "Giving up <cr>already</c>?",
-                "Just <cy>one more try</c>!",
-                "Don't <co>quit now</c>!",
-                "You were <cg>so close</c>!",
-                "<cp>Persistence</c> is key!"
-            };
-            
-            std::random_device rd;
-            std::mt19937 gen(rd());
-            std::uniform_int_distribution<> dis(0, quitMessages.size() - 1);
-            
-            FLAlertLayer::create("Wait!", 
-                quitMessages[dis(gen)], 
-                "OK"
-            )->show();
-            return;
-        }
-        
-        PlayLayer::onQuit();
+        FLAlertLayer::create("No!", "You can't do that!", "OK")->show();
     }
 };
 
@@ -273,21 +202,6 @@ class $modify(MyCreatorLayer, CreatorLayer) {
     }
     
     void onPrankCreate(CCObject* sender) {
-        std::vector<std::string> createMessages = {
-            "Create button is <cr>out of order</c>!",
-            "Editor is <cy>temporarily closed</c>!",
-            "Come back when you're <cg>more creative</c>!",
-            "Creation mode <co>locked</c>!",
-            "Try again <cp>tomorrow</c>!"
-        };
-        
-        std::random_device rd;
-        std::mt19937 gen(rd());
-        std::uniform_int_distribution<> dis(0, createMessages.size() - 1);
-        
-        FLAlertLayer::create("Oops!", 
-            createMessages[dis(gen)], 
-            "Darn"
-        )->show();
+        FLAlertLayer::create("No!", "You can't do that!", "OK")->show();
     }
 };
