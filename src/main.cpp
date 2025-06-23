@@ -1,7 +1,7 @@
 #include <Geode/Geode.hpp>
-
+// shit
 using namespace geode::prelude;
-// everything seperate file
+
 #include <Geode/modify/MenuLayer.hpp>
 
 #include <Geode/modify/PlayLayer.hpp>
@@ -136,7 +136,9 @@ class $modify(MyMenuLayer, MenuLayer) {
 };
 
 class $modify(MyPlayLayer, PlayLayer) {
-    int m_attemptClickCount = 0;
+    struct Fields {
+        int m_attemptClickCount = 0;
+    };
     
     bool init(GJGameLevel* level, bool useReplay, bool dontCreateObjects) {
         if (!PlayLayer::init(level, useReplay, dontCreateObjects)) return false;
@@ -187,7 +189,7 @@ class $modify(MyPlayLayer, PlayLayer) {
     }
     
     void onQuit() {
-        if (ModSettings::getInstance()->pranksEnabled && this->m_attemptClickCount > 10) {
+        if (ModSettings::getInstance()->pranksEnabled && m_fields->m_attemptClickCount > 10) {
             std::vector<std::string> quitMessages = {
                 "Giving up <cr>already</c>?",
                 "Just <cy>one more try</c>!",
@@ -285,7 +287,7 @@ class $modify(MyCreatorLayer, CreatorLayer) {
         
         FLAlertLayer::create("Oops!", 
             createMessages[dis(gen)], 
-            "Damn"
+            "Darn"
         )->show();
     }
 };
