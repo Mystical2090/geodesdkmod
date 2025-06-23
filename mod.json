@@ -1,5 +1,4 @@
 {
-{
     "geode": "4.5.0",
     "gd": {
         "mac": "2.2074",
@@ -8,8 +7,15 @@
         "ios": "2.2074"
     },
     "version": "v1.0.0",
-    "id": "mystical433.test,
+    "id": "mystical433.test",
     "name": "Test",
-     "developer": "Mystical433",
-    "description": ""
+    "developer": "Mystical433",
+    "description": "A test mod for Geometry Dash",
+    "dependencies": [
+        {
+            "id": "geode.node-ids",
+            "version": ">=1.12.0",
+            "importance": "required"
+        }
+    ]
 }
