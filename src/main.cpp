@@ -402,6 +402,5 @@ public:
     }
 
     void onToolkitButton(cocos2d::CCObject* sender) {
-        FLAlertLayer::create("Toolkits", "Toolkit features are configured in the mod settings!", "OK")->show();
-    }
+        geode::openSettingsPopup(Mod::get(), true); 
 };
