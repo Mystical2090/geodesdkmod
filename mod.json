@@ -64,24 +64,6 @@
                 "slider-step": 0.01
             }
         },
-        "enable-mini-trail": {
-            "name": "Enable Mini Trail",
-            "description": "Adds a special trail effect for very small players",
-            "type": "bool",
-            "default": false
-        },
-        "enable-rainbow-trail": {
-            "name": "Enable Rainbow Trail",
-            "description": "Makes the player cycle through rainbow colors with a trail effect",
-            "type": "bool",
-            "default": false
-        },
-        "enable-auto-jump": {
-            "name": "Enable Auto Jump",
-            "description": "Automatically jumps to help navigate obstacles",
-            "type": "bool",
-            "default": false
-        },
         "enable-custom-gravity": {
             "name": "Enable Custom Gravity",
             "description": "Modify the gravity affecting the player",
@@ -148,33 +130,9 @@
             "type": "bool",
             "default": false
         },
-        "show-attempt-counter": {
-            "name": "Show Attempt Counter",
-            "description": "Display attempt count in the top-right corner",
-            "type": "bool",
-            "default": false
-        },
-        "show-progress-bar": {
-            "name": "Show Progress Bar",
-            "description": "Display level progress at the bottom of screen",
-            "type": "bool",
-            "default": false
-        },
         "enhanced-practice-mode": {
             "name": "Enhanced Practice Mode",
             "description": "Additional features and information for practice mode",
-            "type": "bool",
-            "default": false
-        },
-        "enable-instant-restart": {
-            "name": "Enable Instant Restart",
-            "description": "Quickly restart levels with a hotkey",
-            "type": "bool",
-            "default": false
-        },
-        "track-level-stats": {
-            "name": "Track Level Statistics",
-            "description": "Keep track of level completion and performance stats",
             "type": "bool",
             "default": false
         },
