@@ -2,103 +2,186 @@
     "geode": "4.6.1",
     "gd": {
         "win": "2.2074",
+        "mac": "2.2074",
         "android": "2.2074",
-        "ios": "2.2074",
-        "mac": "2.2074"
+        "ios": "2.2074"
     },
-    "id": "mystical433.toolkits",
-    "name": "ToolKits",
     "version": "v1.0.0",
-    "description": "ToolKits",
+    "id": "mystical433.toolkits",
+    "name": "Toolkits",
     "developer": "Mystical433",
+    "description": hi.",
     "settings": {
         "player-scale": {
             "name": "Player Scale",
-            "description": "Scale multiplier for the player (1.0 = normal size)",
+            "description": "Adjust the size of your player icon",
             "type": "float",
-            "default": 0.5,
+            "default": 1.0,
             "min": 0.1,
             "max": 3.0,
             "control": {
                 "slider": true,
-                "slider-step": 0.05,
-                "arrows": false
+                "arrows": false,
+                "big-arrows": false,
+                "arrow-step": 0.1,
+                "big-arrow-step": 0.5,
+                "slider-step": 0.01
             }
         },
         "enable-jump-boost": {
             "name": "Enable Jump Boost",
-            "description": "Allow small players to jump higher",
-            "type": "bool",
-            "default": true
-        },
-        "jump-boost": {
-            "name": "Jump Boost Multiplier",
-            "description": "Jump velocity multiplier when player is scaled below 1.0",
-            "type": "float", 
-            "default": 1.3,
-            "min": 1.0,
-            "max": 3.0,
-            "control": {
-                "slider": true,
-                "slider-step": 0.1,
-                "arrows": false
-            }
-        },
-        "enable-speed-boost": {
-            "name": "Enable Speed Boost",
-            "description": "Give small players extra horizontal speed",
+            "description": "Gives a small jump boost when player is scaled down",
             "type": "bool",
             "default": false
         },
-        "speed-multiplier": {
-            "name": "Speed Multiplier",
-            "description": "Horizontal speed multiplier for small players",
+        "jump-boost": {
+            "name": "Jump Boost Amount",
+            "description": "How much extra height to add when jumping with small scale",
             "type": "float",
-            "default": 1.1,
-            "min": 1.0,
-            "max": 2.0,
+            "default": 5.0,
+            "min": 0.0,
+            "max": 50.0,
             "control": {
                 "slider": true,
-                "slider-step": 0.05,
-                "arrows": false
+                "slider-step": 0.5
             }
         },
         "enable-transparency": {
-            "name": "Enable Transparency",
-            "description": "Make the player semi-transparent",
+            "name": "Enable Player Transparency",
+            "description": "Make the player icon transparent",
             "type": "bool",
             "default": false
         },
         "player-opacity": {
             "name": "Player Opacity",
-            "description": "How transparent the player should be (1.0 = fully visible)",
+            "description": "Set the transparency level of the player",
             "type": "float",
-            "default": 0.7,
+            "default": 1.0,
             "min": 0.1,
             "max": 1.0,
             "control": {
                 "slider": true,
-                "slider-step": 0.05,
-                "arrows": false
+                "slider-step": 0.01
             }
         },
         "enable-mini-trail": {
             "name": "Enable Mini Trail",
-            "description": "Add particle trail for very small players (≤0.3 scale)",
+            "description": "Adds a special trail effect for very small players",
             "type": "bool",
-            "default": true
+            "default": false
+        },
+        "enable-rainbow-trail": {
+            "name": "Enable Rainbow Trail",
+            "description": "Makes the player cycle through rainbow colors with a trail effect",
+            "type": "bool",
+            "default": false
+        },
+        "enable-auto-jump": {
+            "name": "Enable Auto Jump",
+            "description": "Automatically jumps to help navigate obstacles",
+            "type": "bool",
+            "default": false
+        },
+        "enable-custom-gravity": {
+            "name": "Enable Custom Gravity",
+            "description": "Modify the gravity affecting the player",
+            "type": "bool",
+            "default": false
+        },
+        "gravity-multiplier": {
+            "name": "Gravity Multiplier",
+            "description": "Multiply the gravity effect (1.0 = normal, 0.5 = half gravity, 2.0 = double gravity)",
+            "type": "float",
+            "default": 1.0,
+            "min": 0.1,
+            "max": 5.0,
+            "control": {
+                "slider": true,
+                "slider-step": 0.1
+            }
         },
         "enable-mini-death-effect": {
             "name": "Enable Mini Death Effect",
-            "description": "Special death animation for small players",
-            "type": "bool",
-            "default": true
-        },
-        "enable-debug-mode": {
-            "name": "Debug Mode",
-            "description": "Enable debug logging for troubleshooting (Very useless)",
+            "description": "Special death effect for small players",
             "type": "bool",
             "default": false
+        },
+        "enable-enhanced-death-effect": {
+            "name": "Enable Enhanced Death Effect",
+            "description": "More dramatic death effects with screen shake and particles",
+            "type": "bool",
+            "default": false
+        },
+        "enable-speed-boost": {
+            "name": "Enable Speed Hack",
+            "description": "Modify the game speed",
+            "type": "bool",
+            "default": false
+        },
+        "speed-multiplier": {
+            "name": "Speed Multiplier",
+            "description": "Multiply the game speed (1.0 = normal speed)",
+            "type": "float",
+            "default": 1.0,
+            "min": 0.1,
+            "max": 10.0,
+            "control": {
+                "slider": true,
+                "slider-step": 0.1
+            }
+        },
+        "enable-frame-step": {
+            "name": "Enable Frame Stepping",
+            "description": "Allows frame-by-frame gameplay control",
+            "type": "bool",
+            "default": false
+        },
+        "noclip": {
+            "name": "Noclip",
+            "description": "Pass through obstacles without dying",
+            "type": "bool",
+            "default": false
+        },
+        "show-fps": {
+            "name": "Show FPS Counter",
+            "description": "Display current FPS in the top-left corner",
+            "type": "bool",
+            "default": false
+        },
+        "show-attempt-counter": {
+            "name": "Show Attempt Counter",
+            "description": "Display attempt count in the top-right corner",
+            "type": "bool",
+            "default": false
+        },
+        "show-progress-bar": {
+            "name": "Show Progress Bar",
+            "description": "Display level progress at the bottom of screen",
+            "type": "bool",
+            "default": false
+        },
+        "enhanced-practice-mode": {
+            "name": "Enhanced Practice Mode",
+            "description": "Additional features and information for practice mode",
+            "type": "bool",
+            "default": false
+        },
+        "enable-instant-restart": {
+            "name": "Enable Instant Restart",
+            "description": "Quickly restart levels with a hotkey",
+            "type": "bool",
+            "default": false
+        },
+        "track-level-stats": {
+            "name": "Track Level Statistics",
+            "description": "Keep track of level completion and performance stats",
+            "type": "bool",
+            "default": false
+        },
+        "show-toolkit-button": {
+            "name": "Show Toolkit Button",
+            "description": "Add a toolkit button to the main menu",
+            "type": "bool",
+            "default": true
         }
-    }
-}
+    },
