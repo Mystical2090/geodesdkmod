@@ -14,6 +14,8 @@ using namespace geode::prelude;
 
 #include <Geode/modify/LevelInfoLayer.hpp>
 
+#include <Geode/modify/GameStatsManager.hpp>
+
 class $modify(MyPlayerObject, PlayerObject) {
     bool init(int p0, int p1, GJBaseGameLayer* p2, cocos2d::CCLayer* p3, bool p4) {
         if (!PlayerObject::init(p0, p1, p2, p3, p4)) return false;
@@ -362,8 +364,6 @@ public:
 class $modify(MyGameStatsManager, GameStatsManager) {
 public:
     void completedLevel(GJGameLevel* level) {
-        GameStatsManager::completedLevel(level);
-        
         if (Mod::get()->getSettingValue<bool>("track-level-stats")) {
             this->trackLevelCompletion(level);
         }
