@@ -123,7 +123,6 @@ class $modify(MyPlayerObject, PlayerObject) {
     }
 
     void handleAutoJump() {
-        // Simple auto-jump logic - jumps when approaching obstacles
         if (this->m_isOnGround && rand() % 30 == 0) {
             this->pushButton(PlayerButton::Jump);
         }
@@ -193,7 +192,7 @@ class $modify(MyPlayerObject, PlayerObject) {
             if (particle && this->getParent()) {
                 particle->setPosition(this->getPosition());
                 particle->setScale(0.15f);
-                particle->setColor({255, (rand() % 100) + 155, 0});
+                particle->setColor({255, static_cast<GLubyte>((rand() % 100) + 155), 0});
                 this->getParent()->addChild(particle);
 
                 float angle = (rand() % 360) * M_PI / 180.0f;
@@ -325,7 +324,6 @@ public:
     }
 
     void handleInstantRestart() {
-// later
     }
 
     void destroyPlayer(PlayerObject* player, GameObject* object) {
@@ -361,7 +359,7 @@ public:
     }
 };
 
-class $modify(GameStatsManager, GameManager) {
+class $modify(MyGameStatsManager, GameManager) {
 public:
     void completedLevel(GJGameLevel* level) {
         GameManager::completedLevel(level);
@@ -389,7 +387,7 @@ public:
     }
 
     void addToolkitButton() {
-        auto toolkitBtn = cocos2d::CCMenuItemSpriteExtra::create(
+        auto toolkitBtn = CCMenuItemSpriteExtra::create(
             cocos2d::CCSprite::createWithSpriteFrameName("GJ_optionsBtn_001.png"),
             this,
             menu_selector(EnhancedMenuLayer::onToolkitButton)
