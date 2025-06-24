@@ -18,10 +18,6 @@ jobs:
         - name: mac 
           os: macos-latest
 
-        - name: ios
-          os: macos-latest
-          target: iOS
-
         - name: android32
           os: ubuntu-latest
           target: Android32
