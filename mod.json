@@ -82,12 +82,6 @@
             "type": "bool",
             "default": false
         },
-        "hitboxes": {
-            "name": "hitboxes",
-            "description": "hi",
-            "type": "bool",
-            "default": false
-        },
         "enable-custom-gravity": {
             "name": "Enable Custom Gravity",
             "description": "Modify the gravity affecting the player",
