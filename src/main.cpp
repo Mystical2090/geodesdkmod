@@ -359,10 +359,10 @@ public:
     }
 };
 
-class $modify(MyGameStatsManager, GameManager) {
+class $modify(MyGameStatsManager, GameStatsManager) {
 public:
     void completedLevel(GJGameLevel* level) {
-        GameManager::completedLevel(level);
+        GameStatsManager::completedLevel(level);
         
         if (Mod::get()->getSettingValue<bool>("track-level-stats")) {
             this->trackLevelCompletion(level);
